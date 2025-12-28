@@ -1,0 +1,139 @@
+:root {
+  --bg: #0b0e11;
+  --text: #cfd8dc;
+  --accent: #7dd3fc;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Courier New", monospace;
+  /* Добавляем плавный переход цвета фона для миров */
+  transition: background 1s ease; 
+}
+
+#terminal {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #222;
+  background: rgba(0,0,0,0.85);
+  position: relative; /* Чтобы вспышка могла позиционироваться внутри, если захочешь */
+}
+
+#output {
+  white-space: pre-wrap;
+  line-height: 1.5;
+  min-height: 300px;
+}
+
+.choice-btn {
+  display: block;
+  margin-top: 10px;
+  padding: 8px;
+  background: transparent;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.choice-btn:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+/* Цвета миров */
+.world-INTRO { --bg:#0b0e11; }
+.world-W1 { --bg:#0f172a; }
+.world-W2 { --bg:#1c1c1c; }
+.world-W3 { --bg:#2a1f0f; }
+.world-W4 { --bg:#0a0a0a; }
+.world-W5 { --bg:#2a0000; }
+
+/* --- ЭФФЕКТЫ (ВСТАВЛЯТЬ СЮДА) --- */
+
+/* Анимация тряски для терминала */
+.shake-animation {
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-2px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+  40%, 60% { transform: translate3d(6px, 0, 0); }
+}
+
+/* Белая вспышка на весь экран */
+.white-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  z-index: 9999;
+  pointer-events: none; /* Чтобы нельзя было кликнуть по вспышке */
+  animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+/* Праздничный мир */
+.world-BIRTHDAY {
+    background: linear-gradient(135deg, #1a1a1a 0%, #4a00e0 50%, #8e2de2 100%) !important;
+    color: #fff !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+/* Анимация появления для финального экрана */
+.birthday-fade-in {
+    animation: celebrateIn 2s ease-out forwards;
+}
+
+@keyframes celebrateIn {
+    0% { opacity: 0; transform: scale(0.9); filter: blur(10px); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* Золотая кнопка */
+.world-BIRTHDAY .choice-btn {
+    background: linear-gradient(45deg, #ffd700, #ff8c00) !important;
+    border: none !important;
+    color: #000 !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5) !important;
+    transition: 0.3s !important;
+}
+
+.world-BIRTHDAY .choice-btn:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 0 25px rgba(255, 215, 0, 0.8) !important;
+}
+
+/* Эффект мерцания текста */
+.birthday-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+    line-height: 1.6;
+}
+.birthday-text {
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    animation: textGlow 2s infinite alternate;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); }
+    to { text-shadow: 0 0 25px rgba(255, 215, 0, 1), 0 0 10px white; }
+}
+
+/* Скроем полосу прокрутки, если звезд будет слишком много */
+body.world-BIRTHDAY {
+    overflow: hidden;
+}
