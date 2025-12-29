@@ -340,7 +340,14 @@ function typeText(text, callback) {
     typingInterval = setInterval(() => {
         output.innerHTML += text.charAt(i);
         i++;
-        if (i >= text.length) { clearInterval(typingInterval); callback(); }
+        
+        // АВТОСКРОЛЛ: держит последние строки в поле зрения
+        output.scrollTop = output.scrollHeight; 
+
+        if (i >= text.length) { 
+            clearInterval(typingInterval); 
+            callback(); 
+        }
     }, typingSpeed);
 }
 
@@ -386,4 +393,5 @@ document.addEventListener('click', () => {
     if (bgMusic && bgMusic.paused) {
         bgMusic.play().catch(e => console.log("Все еще ждем клика..."));
     }
+
 }, { once: true }); // Сработает только один раз
