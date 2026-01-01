@@ -737,7 +737,7 @@
     "Node_ID": "W1_BOAR_HIT",
     "World": "W1",
     "Type": "battle",
-    "Text": "Кабан ранен и убегает.",
+    "Text": "Кабан ранен и убегает. Кажется,его не догнать.",
     "Choice_1_Text": "победа",
     "Choice_1_Next": "W1_LETSGO",
     "Choice_2_Text": "",
